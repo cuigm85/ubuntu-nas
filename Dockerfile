@@ -26,6 +26,9 @@ RUN addgroup --gid 1000 developer \
   && usermod -aG sudo ubuntu \
   && passwd -e ubuntu
 
+# Installing Git
+RUN apt-get install git
+
 # Installing the GNU C compiler and GNU C++ compiler
 RUN apt-get install -y build-essential
 
