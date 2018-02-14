@@ -21,7 +21,7 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 RUN addgroup --gid 1000 developer \
   && adduser --uid 1000 --gid 1000 --disabled-password --gecos "" ubuntu \
   && echo 'ubuntu:ubuntu' | chpasswd \
-  && usermod -aG sudo ubuntu
+  && usermod -aG sudo ubuntu \
   && passwd -e ubuntu
 
 # Installing the GNU C compiler and GNU C++ compiler
