@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-RUN apt-get update && apt-get upgrade -y && apt-get install -y openssh-server && apt-get install -y vim
+RUN apt-get update && apt-get upgrade -y && apt-get install -y openssh-server && apt-get install -y vim && apt-get install -y man
 RUN mkdir /var/run/sshd
 RUN echo 'root:screencast' | chpasswd
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
