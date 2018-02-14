@@ -37,6 +37,7 @@ RUN apt-get install -y python3-pip \
   && runuser -l ubuntu -c "python3 -m pip install --upgrade pip" \
   && runuser -l ubuntu -c "python3 -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose" \
   && runuser -l ubuntu -c "python3 -m pip install --user scikit-learn" \
+  && runuser -l ubuntu -c "python3 -m pip install --user mglearn" \
   && runuser -l ubuntu -c "jupyter notebook --generate-config" \
   && runuser -l ubuntu -c "echo \"c = get_config()\" >> ~/.jupyter/jupyter_notebook_config.py" \
   && runuser -l ubuntu -c "echo \"c.NotebookApp.ip = '0.0.0.0'\" >> ~/.jupyter/jupyter_notebook_config.py" \
