@@ -19,7 +19,8 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 # Add developer group and user ubuntu
 RUN addgroup --gid 1000 developer \
   && adduser --uid 1000 --gid 1000 --disabled-password --gecos "" ubuntu \
-  && echo 'ubuntu:ubuntu' | chpasswd
+  && echo 'ubuntu:ubuntu' | chpasswd \
+  && passwd -e ubuntu
 
 # Installing the GNU C compiler and GNU C++ compiler
 RUN apt-get install -y build-essential
