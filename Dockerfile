@@ -16,6 +16,11 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
+# Add developer group and user ubuntu
+RUN addgroup --gid 1000 developer \
+  && adduser --uid 1000 --gid 1000 --disabled-password --gecos "" ubuntu \
+  && echo 'ubuntu:ubuntu' | chpasswd
+
 # Installing the GNU C compiler and GNU C++ compiler
 RUN apt-get install -y build-essential
 
