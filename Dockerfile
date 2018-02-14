@@ -3,7 +3,8 @@ FROM ubuntu:16.04
 RUN apt-get update && apt-get upgrade -y \
   && apt-get install -y openssh-server \
   && apt-get install -y vim \
-  && apt-get install -y man
+  && apt-get install -y man \
+  && apt-get install -y man-db
   
 RUN mkdir /var/run/sshd
 RUN echo 'root:screencast' | chpasswd
