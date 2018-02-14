@@ -24,5 +24,10 @@ RUN addgroup --gid 1000 developer \
 # Installing the GNU C compiler and GNU C++ compiler
 RUN apt-get install -y build-essential
 
+# Install Python 3
+RUN apt-get install -y python3-pip \
+  && runuser -l ubuntu -c 'python3 -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose' \
+  && runuser -l ubuntu -c 'python3 -m pip install --user scikit-learn'
+
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
