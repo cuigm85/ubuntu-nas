@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 RUN apt-get update && apt-get upgrade -y \
   && apt-get install -y openssh-server \
@@ -32,18 +32,12 @@ RUN apt-get install -y git
 # Installing the GNU C compiler and GNU C++ compiler
 RUN apt-get install -y build-essential
 
+# Installing the OpenJDK 8 packages
+RUN apt-get install -y openjdk-8-jdk
+
 # Install Python 3
 RUN apt-get install -y python3-pip \
-  && runuser -l ubuntu -c "python3 -m pip install --upgrade pip" \
-  && runuser -l ubuntu -c "python3 -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose" \
-  && runuser -l ubuntu -c "python3 -m pip install --user scikit-learn" \
-  && runuser -l ubuntu -c "python3 -m pip install --user mglearn" \
-  && runuser -l ubuntu -c "jupyter notebook --generate-config" \
-  && runuser -l ubuntu -c "echo \"c = get_config()\" >> ~/.jupyter/jupyter_notebook_config.py" \
-  && runuser -l ubuntu -c "echo \"c.NotebookApp.ip = '0.0.0.0'\" >> ~/.jupyter/jupyter_notebook_config.py" \
-  && runuser -l ubuntu -c "echo \"c.NotebookApp.open_browser = False\" >> ~/.jupyter/jupyter_notebook_config.py" \
-  && runuser -l ubuntu -c "echo \"c.NotebookApp.port = 8888\" >> ~/.jupyter/jupyter_notebook_config.py" \
-  && runuser -l ubuntu -c "echo \"c.NotebookApp.password = 'sha1:e0bbf67da8b9:6b86ddf8dc63701729c25b66a800476ed8a90669'\" >> ~/.jupyter/jupyter_notebook_config.py" 
+  && apt-get install -y python3-venv
 
 EXPOSE 8888
 EXPOSE 22
