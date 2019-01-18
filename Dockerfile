@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 # Do not exclude man pages & other documentation
 RUN rm /etc/dpkg/dpkg.cfg.d/excludes
 # Reinstall all currently installed packages in order to get the man pages back
-RUN apt-get update && \
+RUN apt-get update \
   && apt-get install -y man \
   && apt-get install -y man-db \
   && dpkg -l | grep ^ii | cut -d' ' -f3 | xargs apt-get install -y --reinstall \
