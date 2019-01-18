@@ -1,13 +1,20 @@
 FROM ubuntu:18.04
 
+# Do not exclude man pages & other documentation
+RUN rm /etc/dpkg/dpkg.cfg.d/excludes
+# Reinstall all currently installed packages in order to get the man pages back
+RUN apt-get update && \
+  && apt-get install -y man \
+  && apt-get install -y man-db \
+  && dpkg -l | grep ^ii | cut -d' ' -f3 | xargs apt-get install -y --reinstall \
+  && rm -r /var/lib/apt/lists/*
+
 RUN apt-get update && apt-get upgrade -y \
   && apt-get install -y openssh-server \
   && apt-get install -y vim \
   && apt-get install -y sudo \
   && apt-get install -y net-tools \
-  && apt-get install -y iputils-ping \
-  && apt-get install -y man \
-  && apt-get install -y man-db
+  && apt-get install -y iputils-ping 
   
 # Installing Git
 # Installing the GNU C compiler and GNU C++ compiler
