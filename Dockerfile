@@ -21,7 +21,8 @@ RUN apt-get update && apt-get upgrade -y \
 # Installing the prebuilt OpenJDK packages
 RUN apt-get install -y git \
   && apt-get install -y build-essential \
-  && apt-get install -y openjdk-8-jdk
+  && apt-get install -y openjdk-8-jdk \
+  && apt install -y maven
 
 RUN mkdir /var/run/sshd
 # RUN echo 'root:screencast' | chpasswd
