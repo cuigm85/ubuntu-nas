@@ -12,6 +12,7 @@ RUN apt-get update \
 RUN apt-get update && apt-get upgrade -y \
   && apt-get install -y openssh-server \
   && apt-get install -y vim \
+  && apt-get install -y zsh \
   && apt-get install -y sudo \
   && apt-get install -y net-tools \
   && apt-get install -y iputils-ping 
