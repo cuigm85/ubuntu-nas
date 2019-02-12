@@ -23,7 +23,8 @@ RUN apt-get update && apt-get upgrade -y \
 RUN apt-get install -y git \
   && apt-get install -y build-essential \
   && apt-get install -y openjdk-8-jdk \
-  && apt install -y maven
+  && apt install -y maven \
+  && apt install -y npm
 
 # Installing sbt
 RUN echo "deb https://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list \
