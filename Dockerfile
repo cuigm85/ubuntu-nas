@@ -23,6 +23,7 @@ RUN apt-get update && apt-get upgrade -y \
 RUN apt-get install -y git \
   && apt-get install -y build-essential \
   && apt-get install -y openjdk-8-jdk \
+  && apt-get install -y golang-go \
   && apt install -y maven \
   && apt install -y npm
 
